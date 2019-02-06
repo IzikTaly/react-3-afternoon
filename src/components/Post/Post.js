@@ -65,8 +65,8 @@ export default class Post extends Component {
 
           {/* Drop-down menu. Remember that the "showMasterMenu" variable has been destructured off of this.state */}
           <div className="Post__master-menu" style={ { display: showMasterMenu ? 'flex' : 'none' } }>
-            <span onClick={ this.showEdit }>Edit</span>
-            <span>Delete</span>
+          <span onClick={ this.showEdit }>Edit</span>
+          <span onClick={ () => deletePostFn( id ) }>Delete</span> { /* Remember to destructure deletePostFn off of props or use this.props.deletePostFn */ }
           </div>
         </div>
 
@@ -79,7 +79,7 @@ export default class Post extends Component {
           <span className="Post__name">DevMountain</span>
           <span className="Post__handle">@DevMountain</span>
 
-          <span className="Post__date">- POST DATE GOES HERE</span>
+          <span className="Post__date">- { date }</span>
         </div>
 
         {/* This is where the text goes. Notice the turnary statement. The turnary statement decides to display either the text OR the editor view
@@ -98,7 +98,7 @@ export default class Post extends Component {
               <Edit text=""
                     hideEdit={ this.hideEdit } />
             :
-              <span className="Post__text">POST TEXT GOES HERE</span>
+              <span className="Post__text">{ text }</span>
           }
         </div>
 
